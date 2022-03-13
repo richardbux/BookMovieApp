@@ -1,4 +1,3 @@
-//import 'date-fns';
 import React, { useEffect, useState } from "react";
 import Header from "../../common/header/Header";
 import GridList from '@material-ui/core/GridList';
@@ -31,7 +30,7 @@ const styles = (theme) => ({
         // "font-size": "1rem"
     },
     formControl: {
-        margin: theme.spacing.unit,
+        margin: theme.spacing(1),
         minWidth: 240,
         maxWidth: 240,
     }
@@ -179,7 +178,7 @@ const Home = (props) => {
                 </GridList>
             </div>
             <div className="filter">
-                <Card>
+                <Card style={{ margin: '16px' }}>
                     <CardContent>
                         <FormControl className={classes.formControl}>
                             <Typography className={classes.headingCard} color="textSecondary">

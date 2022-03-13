@@ -6,17 +6,19 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-
 import { Link, withRouter } from 'react-router-dom';
-
 import "./details.css";
 
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 const Details = (props) => {
 
     const [movieDetails, setMovieDetails] = useState("");
 
     const [stars, setStars] = useState([])
 
+    /**
+     * Set Youtube Video options
+     */
     const youTubeOption = {
         height: '300',
         width: '700',
@@ -66,7 +68,7 @@ const Details = (props) => {
     return (
         <div>
             <Header showBookShowButton={true} id={props.match.params.id} {...props}></Header>
-            <Typography>
+            <Typography component={'span'}>
                 <Link to="/" className="link" ><div className="back-button">{'< Back to Home'}</div></Link>
             </Typography>
             <div className="flex-container">
@@ -106,6 +108,7 @@ const Details = (props) => {
                         {
                             stars.map(star => {
                                 return <StarBorderIcon
+                                    key={star.id}
                                     className={star.color}
                                     onClick={() => handleRating(star.id)}
                                 ></StarBorderIcon>

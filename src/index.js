@@ -7,6 +7,6 @@ import Controller from './screens/Controller';
 
 
 ReactDOM.render(
-    <Controller baseUrl="http://localhost:8085/api/v1/" />,
+    <Controller baseUrl="api/v1/" />,
     document.getElementById('root'));
 registerServiceWorker();

@@ -89,11 +89,11 @@ const LoginRegister = (props) => {
         }).then((response) => response.json())
             .then((response) => {
                 if (response.status === "ACTIVE") {
-                    setResponseText("Registration Successfull. Please Login!")
-                    setResponseStyle("success");
+                    setResponseTextRegister("Registration Successfull. Please Login!")
+                    setResponseTextRegisterStyle("success");
                 } else {
-                    setResponseText(response.message);
-                    setResponseStyle("red");
+                    setResponseTextRegister(response.message);
+                    setResponseTextRegisterStyle("red");
                 }
             })
 

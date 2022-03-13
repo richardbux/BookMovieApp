@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [buttonValue, setButtonValue] = useState("LOGIN");
-    const [redirectToBookShow, setRedirectToBookShow] = useState(false)
+    //const [redirectToBookShow, setRedirectToBookShow] = useState(false)
     function toggleModal() {
         setIsOpen(!isOpen);
     }
@@ -36,7 +36,7 @@ const Header = (props) => {
         <Fragment>
             <div className="header">
                 <img className="logo" src={logo} alt="My logo" />
-                {buttonValue == "LOGIN" ?
+                {buttonValue === "LOGIN" ?
                     <Button className="login-btn" variant="contained" name="login" onClick={toggleModal}>{buttonValue}</Button>
                     : <Link to="/"><Button className="login-btn" variant="contained" name="login" onClick={handleLogout}>{buttonValue}</Button></Link>
                 }

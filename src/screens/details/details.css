@@ -19,7 +19,6 @@
     height: 350px
 }
 .movie-image{
-    width:100%;
     margin: 16px;
 }
 .middle{
@@ -27,7 +26,8 @@
     width: 60%;
 }
 .mid-section{
-    margin: 16px;
+    margin: 16px !important;
+    width:100%;
 }
 .right{
     display: flex;
