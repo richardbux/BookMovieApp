@@ -6,11 +6,13 @@ import Modal from "react-modal";
 import { modalCreateLogin } from "./modalStyle.js"
 import LoginRegister from "../../screens/login-register/LoginRegister.js"
 import "./header.css"
+import { Link } from 'react-router-dom';
 
 
 const Header = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [buttonValue, setButtonValue] = useState("LOGIN")
+    const [buttonValue, setButtonValue] = useState("LOGIN");
+    const [redirectToBookShow, setRedirectToBookShow] = useState(false)
     function toggleModal() {
         setIsOpen(!isOpen);
     }
@@ -21,8 +23,11 @@ const Header = (props) => {
         }
     }, [buttonValue])
 
-    const bookShowHandler=()=>{
+    const handleLogout = () => {
 
+        sessionStorage.removeItem('access-token');
+        sessionStorage.removeItem('user-details');
+        setButtonValue("LOGIN");
     }
 
 
@@ -31,10 +36,21 @@ const Header = (props) => {
         <Fragment>
             <div className="header">
                 <img className="logo" src={logo} alt="My logo" />
-                <Button className="login-btn" variant="contained" name="login" onClick={toggleModal}>{buttonValue}</Button>
-                {props.showBookShowButton ?
-                    <Button className="login-btn" variant="contained" onClick={bookShowHandler} color="primary">Book Show</Button>
+                {buttonValue == "LOGIN" ?
+                    <Button className="login-btn" variant="contained" name="login" onClick={toggleModal}>{buttonValue}</Button>
+                    : <Link to="/"><Button className="login-btn" variant="contained" name="login" onClick={handleLogout}>{buttonValue}</Button></Link>
+                }
+                {props.showBookShowButton && buttonValue === "LOGIN" ?
+                    <Button className="login-btn" variant="contained" onClick={() => toggleModal()} color="primary">Book Show</Button>
                     : ""}
+                {
+                    props.showBookShowButton && buttonValue === "LOGOUT" && props.id ?
+                        <Link to={"/bookshow/" + props.id}>
+                            <Button className="login-btn" variant="contained" color="primary">
+                                Book Show
+                            </Button>
+                        </Link> : ""
+                }
             </div>
             <Modal
                 isOpen={isOpen}

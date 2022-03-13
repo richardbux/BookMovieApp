@@ -21,6 +21,7 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
 
 import "./home.css"
+import { Link } from 'react-router-dom';
 
 
 
@@ -149,7 +150,7 @@ const Home = (props) => {
                         <GridListTile style={{
                             width: '16.66%',
                         }} key={tile.id}>
-                            <img src={tile.poster_url} style={{ width: "100%", height: "100%" }} alt={tile.title} />
+                            <Link to={`/movie/${tile.id}`}><img src={tile.poster_url} style={{ width: "100%", height: "100%" }} className="image" alt={tile.title} /></Link>
                             <GridListTileBar
                                 title={tile.title}
                             />
@@ -238,7 +239,7 @@ const Home = (props) => {
                                 type="date"
                                 defaultValue=""
                                 InputLabelProps={{ shrink: true }}
-                                onChange={(e)=>setSelectedDateStart(e.target.value)}
+                                onChange={(e) => setSelectedDateStart(e.target.value)}
                             />
                         </FormControl>
                         <FormControl className={classes.formControl}>
@@ -248,7 +249,7 @@ const Home = (props) => {
                                 type="date"
                                 defaultValue=""
                                 InputLabelProps={{ shrink: true }}
-                                onChange={(e)=>setSelectedDateEnd(e.target.value)}
+                                onChange={(e) => setSelectedDateEnd(e.target.value)}
                             />
                         </FormControl>
                         <br /><br />
